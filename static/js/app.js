@@ -29,4 +29,15 @@ form.on("submit", runEnter);
 // create function to run for both events
 function runEnter() {
 
+    // prevent page refresh
+    d3.event.preventDefault();
+
+    // select input element and get raw html node
+    var inputElement = d3.select("#datetime");
+
+    // get value property of the input element
+    var inputValue = inputElement.property("value");
+
+    // print value to the console
+    console.log(inputValue);
 };
