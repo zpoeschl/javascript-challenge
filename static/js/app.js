@@ -40,4 +40,9 @@ function runEnter() {
 
     // print value to the console
     console.log(inputValue);
+
+    // filter table based on input
+    var filteredData = tableData.filter(sightingReport => sightingReport.datetime === inputValue);
+
+    console.log(filteredData);
 };
