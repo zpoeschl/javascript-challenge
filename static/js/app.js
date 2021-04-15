@@ -33,8 +33,8 @@ function runEnter() {
     d3.event.preventDefault();
 
     var input, filter, table, tr, td, i, txtValue;
-    input = document,getElementById("datetime");
-    filter = input.value();
+    input = document.getElementById("datetime");
+    filter = input.value.toUpperCase();
     table = document.getElementById("ufo-table");
     tr = table.getElementsByTagName("tr");
 
