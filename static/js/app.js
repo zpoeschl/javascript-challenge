@@ -33,7 +33,7 @@ function runEnter() {
     d3.event.preventDefault();
 
     // select input element and get raw html node
-    var inputElement = d3.select("#datetime"); //stackover #myInput
+    var inputElement = d3.select("#datetime");
 
     // get value property of the input element
     var inputValue = inputElement.property("value");
@@ -52,9 +52,10 @@ function runEnter() {
     tr = table.getElementsByTagName("tr");
 
     for (i = 1; i < tr.length; i++) {
-        tr[i].style.display = "none";
-
-        tr[i].style.display = "";
-        break;
-    };
-};
+        if (tr.filteredDate > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
