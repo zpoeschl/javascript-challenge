@@ -33,7 +33,7 @@ function runEnter() {
     d3.event.preventDefault();
 
     // select input element and get raw html node
-    var inputElement = d3.select("#datetime");
+    var inputElement = d3.select("#datetime"); //stackover #myInput
 
     // get value property of the input element
     var inputValue = inputElement.property("value");
@@ -42,12 +42,15 @@ function runEnter() {
     console.log(inputValue);
 
     // filter table based on input
-    var filteredData = tableData.filter(sightingReport => sightingReport.datetime === inputValue);
+    var filteredDate = tableData.filter(sightingReport => sightingReport.datetime === inputValue);
 
-    console.log(filteredData);
+    console.log(filteredDate);
 
     // for loop to filter table display
-    // not working
+    var table, tr;
+    table = document.getElementById("ufo-table");
+    tr = table.getElementsByTagName("tr");
+
     for (i = 1; i < tr.length; i++) {
         tr[i].style.display = "none";
 
@@ -55,10 +58,10 @@ function runEnter() {
         for (var j = 0; j < td.length; j++) {
             cell = tr[i].getElementsByTagName("td")[j];
             if (cell) {
-                if (cell.innerText.indexOf(filter) > -1) {
+                // if (cell.innerText.indexOf(filter) > -1) {
                     tr[i].style.display = "";
+                    break;
                 };
             };
         };
     };
-};
