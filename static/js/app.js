@@ -32,30 +32,49 @@ function runEnter() {
     // prevent page refresh
     d3.event.preventDefault();
 
-    // select input element and get raw html node
-    var inputElement = d3.select("#datetime");
-
-    // get value property of the input element
-    var inputValue = inputElement.property("value");
-
-    // print value to the console
-    console.log(inputValue);
-
-    // filter table based on input
-    var filteredDate = tableData.filter(sightingReport => sightingReport.datetime === inputValue);
-
-    console.log(filteredDate);
-
-    // for loop to filter table display
-    var table, tr;
+    var input, filter, table, tr, td, i, txtValue;
+    input = document,getElementById("datetime");
+    filter = input.value();
     table = document.getElementById("ufo-table");
     tr = table.getElementsByTagName("tr");
 
-    for (i = 1; i < tr.length; i++) {
-        if (tr.filteredDate > -1) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
         }
     }
 }
+
+//     // prevent page refresh
+//     d3.event.preventDefault();
+
+//     // select input element and get raw html node
+//     var inputElement = d3.select("#datetime");
+
+//     // get value property of the input element
+//     var inputValue = inputElement.property("value");
+
+//     // filter table based on input
+//     var filteredDate = tableData.filter(sightingReport => sightingReport.datetime === inputValue);
+
+//     console.log(filteredDate);
+
+//     // for loop to filter table display
+//     var table, td;
+//     table = document.getElementById("ufo-table");
+//     tr = table.getElementsByTagName("tr");
+
+//     for (var i = 0; i < tr.length; i++) {
+//         if (filteredDate.length > -1) {
+//             tr[i].style.display = "";
+//         } else {
+//             tr[i].style.display = "none";
+//         }
+//     }
+// }
